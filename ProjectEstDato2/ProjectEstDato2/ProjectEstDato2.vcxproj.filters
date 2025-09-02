@@ -18,5 +18,8 @@
     <ClCompile Include="Arbol.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ArbolBalanceado.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
