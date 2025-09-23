@@ -136,7 +136,7 @@ int main()
     ArbolB arbol;
 
     // Ingreso de datos
-    vector<int> datos = {10, 20};
+    vector<int> datos = {10, 20, 5, 8, 12, 25, 30};
 
     for (int x : datos)
     {
