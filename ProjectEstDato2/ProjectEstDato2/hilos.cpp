@@ -1,6 +1,7 @@
 #include <iostream>
 #include <thread>    //Libreria de hilos
 #include <semaphore> //Semaforo y  sincronizacion
+#include <mutex>     //similar  = Semaforo y  sincronizacion
 
 // std::counting_semaphore<1> semaforo(1); // Semaforo de control
 std::mutex semaforo; // reemplaza counting_semaphore
