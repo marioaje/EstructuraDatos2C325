@@ -92,8 +92,8 @@ void resize(HashTable *hashTablaDinamica)
     int oldSize = hashTablaDinamica->size;
 
     Entry *oldTable = hashTablaDinamica->table;
-
-    hashTablaDinamica->size = 2;
+    // x2
+    hashTablaDinamica->size *= 2;
     hashTablaDinamica->count = 0;
     hashTablaDinamica->table = (Entry *)calloc(hashTablaDinamica->size, sizeof(Entry));
 
@@ -119,7 +119,7 @@ int main()
     insert(hashTablaDinamica, 5, 50);
 
     std::cout << "Valor para la llave3: " << search(hashTablaDinamica, 3) << std::endl;
-    // std::cout << "Valor para la llave3: " << search(hashTablaDinamica, 300) << std::endl;
+    std::cout << "Valor para la llave3: " << search(hashTablaDinamica, 300) << std::endl;
 
     free(hashTablaDinamica->table);
     free(hashTablaDinamica);
