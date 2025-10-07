@@ -2,7 +2,8 @@
 #include <thread>    //Libreria de hilos
 #include <semaphore> //Semaforo y  sincronizacion
 
-std::counting_semaphore<1> semaforo(1); // Semaforo de control
+// std::counting_semaphore<1> semaforo(1); // Semaforo de control
+std::mutex semaforo; // reemplaza counting_semaphore
 
 // acceso a los recurso compartidos
 int recursosCompartidos = 0;
@@ -13,11 +14,13 @@ void tarea(const std::string &nombre)
 
     for (int i = 0; i < 3; i++)
     {
-        semaforo.acquire(); // Esperar turno, recursos, hacer fila;
+        std::lock_guard<std::mutex> lock(semaforo);
+        // semaforo.acquire(); // Esperar turno, recursos, hacer fila;
 
         recursosCompartidos++; // Contador de recursos
         std::cout << nombre << "acceso al recurso: " << recursosCompartidos << std::endl;
-        semaforo.release(); // liberar los recursos
+        // semaforo.release(); // liberar los recursos
+        // mutex finalizacion
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
     }
 }
