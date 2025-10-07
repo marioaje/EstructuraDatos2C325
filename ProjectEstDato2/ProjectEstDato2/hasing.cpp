@@ -104,6 +104,8 @@ void resize(HashTable *hashTablaDinamica)
             insert(hashTablaDinamica, oldTable[i].key, oldTable[i].value);
         }
     }
+
+    // Siempre liberar recursos
     free(oldTable);
 }
 int main()
@@ -121,6 +123,7 @@ int main()
     std::cout << "Valor para la llave3: " << search(hashTablaDinamica, 3) << std::endl;
     std::cout << "Valor para la llave3: " << search(hashTablaDinamica, 300) << std::endl;
 
+    ////Siempre liberar recursos por orden de jerarquia, el ultimo que se creo y luego el inicial
     free(hashTablaDinamica->table);
     free(hashTablaDinamica);
 
