@@ -121,8 +121,8 @@ public:
 
 int main()
 {
-    Grafo g(6);
-    g.agregarArista(3, 4, 8);
+    Grafo g(5);
+    // g.agregarArista(3, 4, 8);
     g.agregarArista(0, 1, 4);
     g.agregarArista(0, 4, 1);
     g.agregarArista(1, 2, 3);
@@ -134,12 +134,12 @@ int main()
 
     g.mostrarGrafo();
 
-    g.DFS(3);
-    g.BFS(3);
+    g.DFS(0);
+    g.BFS(0);
 
     if (g.estaContacto())
     {
-        cout << "\n  El grafo esta conectado.\n";
+        cout << "\n   ✅El grafo esta conectado.\n";
     }
     else
     {
