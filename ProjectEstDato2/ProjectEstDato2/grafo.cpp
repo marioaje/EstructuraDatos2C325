@@ -100,12 +100,29 @@ public:
 
         cout << endl;
     }
+
+    // Verificar si un nodo esta conectado en el grafo
+    bool estaContacto()
+    {
+        vector<bool> visitado(numVertice, false);
+        // los nodos revisar si estan comunicados.
+        // Busqueda con DFS
+        DFSUtil(0, visitado);
+        // Aristas
+        for (bool v : visitado)
+        {
+            if (!v)
+                return false; // Si hay un nodo que no visitamos, o que no esta conectado
+        }
+
+        return true;
+    }
 };
 
 int main()
 {
-    Grafo g(5);
-    // g.agregarArista(3, 4, 8);
+    Grafo g(6);
+    g.agregarArista(3, 4, 8);
     g.agregarArista(0, 1, 4);
     g.agregarArista(0, 4, 1);
     g.agregarArista(1, 2, 3);
@@ -113,9 +130,19 @@ int main()
     g.agregarArista(1, 4, 7);
     g.agregarArista(2, 3, 5);
     g.agregarArista(3, 4, 8);
+    //    g.agregarArista(5, 6, 1);
 
-    // g.mostrarGrafo();
+    g.mostrarGrafo();
 
     g.DFS(3);
     g.BFS(3);
+
+    if (g.estaContacto())
+    {
+        cout << "\n  El grafo esta conectado.\n";
+    }
+    else
+    {
+        cout << "\n El grafo NO esta conectado.\n";
+    }
 }
