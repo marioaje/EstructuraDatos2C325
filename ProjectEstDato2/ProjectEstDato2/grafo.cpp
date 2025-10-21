@@ -47,12 +47,65 @@ public:
             cout << endl;
         }
     }
+
+    // Busqueda DFS
+    void DFS(int inicio)
+    {
+        vector<bool> visitado(numVertice, false);
+        cout << "\nRecorrido DFS desde que nodo inicio " << inicio << ": ";
+        DFSUtil(inicio, visitado);
+        cout << endl;
+    }
+
+    void DFSUtil(int v, vector<bool> &visitado)
+    {
+        visitado[v] = true;
+        cout << v << " ";
+        for (auto vecino : listaAdyancecia[v])
+        {
+            if (!visitado[vecino.first])
+            {
+                DFSUtil(vecino.first, visitado);
+            }
+        }
+    }
+
+    // Parecido al DFS el de anchura (BFS)
+
+    void BFS(int inicio)
+    {
+        vector<bool> visitado(numVertice, false);
+        queue<int> cola;
+
+        visitado[inicio] = true;
+        cola.push(inicio);
+
+        cout << "\nRecorrido BFS desde que nodo inicio " << inicio << ": ";
+
+        while (!cola.empty())
+        {
+            int nodo = cola.front();
+            cola.pop();
+            cout << nodo << " ";
+
+            for (auto vecino : listaAdyancecia[nodo])
+            {
+                if (!visitado[vecino.first])
+                {
+                    visitado[vecino.first] = true;
+                    cola.push(vecino.first);
+                }
+            }
+        }
+
+        cout << endl;
+    }
 };
 
 int main()
 {
     Grafo g(5);
-    g.agregarArista(3, 4, 8);
+    // g.agregarArista(3, 4, 8);
     g.agregarArista(0, 1, 4);
     g.agregarArista(0, 4, 1);
     g.agregarArista(1, 2, 3);
@@ -61,5 +114,8 @@ int main()
     g.agregarArista(2, 3, 5);
     g.agregarArista(3, 4, 8);
 
-    g.mostrarGrafo();
+    // g.mostrarGrafo();
+
+    g.DFS(3);
+    g.BFS(3);
 }
